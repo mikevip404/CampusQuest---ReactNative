@@ -169,7 +169,7 @@ export default function ExploreScreen() {
         initialRegion={USC_CENTER}
         showsUserLocation={true}       // Muestra el punto azul de la posición del usuario
         showsMyLocationButton={true}
-        mapType="standard"                 // 'none' permite usar tiles personalizados (OSM)
+        mapType="none"                 // 'none' permite usar tiles personalizados (OSM)
         rotateEnabled={false}          // Deshabilita rotación para evitar confusión
       >
         {/*
@@ -178,6 +178,12 @@ export default function ExploreScreen() {
           urlTemplate: URL con {z}/{x}/{y} que MapView reemplaza automáticamente.
           zIndex: -1 asegura que los marcadores queden encima de los tiles.
         */}
+        <UrlTile
+          urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          maximumZ={19}
+          flipY={false}
+          zIndex={-1}
+        />
 
         {/* ── Marcadores de Estaciones ─────────────────── */}
         {locations.map((loc) => {
